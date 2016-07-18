@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Homework7</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header>
+		<ul>
+			<% if user_signed_in? %>
+				<li>You are signed in as <%= current_user.email %></li>
+				<li><%= link_to('Sign Out', destroy_user_session_url, method: :delete) %></li>
+			<% else %>
+				<li>You are not signed in</li>
+				<li><%= link_to('Sign In', new_user_session_url) %></li>
+			<% end %>
+		</ul>
+	</header>
+<%= yield %>
+
+</body>
+</html>
